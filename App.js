@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet } from "react-native";
 import CheckBoxes from "./src/Wrappers/CheckBoxs";
+import Switches from "./src/Wrappers/Switches";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
     >
       <StatusBar style="light" />
       <CheckBoxes />
+      <Switches/>
     </ScrollView>
   );
 }
@@ -23,5 +25,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 50,
+    gap: 25,
   },
 });

@@ -1,5 +1,10 @@
 import React, { memo, useRef, useEffect } from "react";
-import { Animated, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import {
+  Animated,
+  TouchableWithoutFeedback,
+  StyleSheet,
+  GestureResponderEvent,
+} from "react-native";
 
 const ANIMATION_DURATION = 150;
 const ANIMATION_BOUNCINESS = 25;
@@ -7,7 +12,7 @@ const ANIMATION_BOUNCINESS = 25;
 interface CheckBoxProps {
   size?: number;
   value?: boolean;
-  onPress?: () => void;
+  onPress?: (event: GestureResponderEvent) => void;
   activeBackgroundColor?: string;
   inActiveBackgroundColor?: string;
   activeBorderColor?: string;
