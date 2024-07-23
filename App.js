@@ -4,6 +4,7 @@ import CheckBoxes from "./src/Wrappers/CheckBoxs";
 import Switches from "./src/Wrappers/Switches";
 import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
 import SkeletonWrapper from "./src/Wrappers/SkeletonWrapper";
+import TouchableRippleWrapper from "./src/Wrappers/TouchableRippleWrapper";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <CheckBoxes />
       <Switches />
       <BottomSheetWrapper />
+      <TouchableRippleWrapper />
     </ScrollView>
   );
 }

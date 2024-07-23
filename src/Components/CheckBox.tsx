@@ -1,4 +1,4 @@
-import React, { memo, useRef, useEffect } from "react";
+import { memo, useRef, useEffect } from "react";
 import {
   Animated,
   TouchableWithoutFeedback,

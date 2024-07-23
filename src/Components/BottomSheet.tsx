@@ -34,7 +34,7 @@ interface State {
 
 export default class BottomSheet extends PureComponent<Props, State> {
   static defaultProps = {
-    height: phoneHeight / 2,
+    height: phoneHeight / 3,
     openDuration: 400,
     closeDuration: 400,
     containerStyle: {},
