@@ -64,7 +64,7 @@ export default class BottomSheet extends PureComponent<Props, State> {
     this.state = {
       visible: false,
     };
-    this.translateY = new Animated.Value(this.props.height || phoneHeight / 2);
+    this.translateY = new Animated.Value(this.props.height);
 
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -78,12 +78,12 @@ export default class BottomSheet extends PureComponent<Props, State> {
       onPanResponderRelease: (_, gestureState) => {
         const { dy } = gestureState;
         const { height, closeDuration, closeOnDragDown } = this.props;
-        if (dy > (height || phoneHeight) / 2 && closeOnDragDown) {
-          this.close(closeDuration ? closeDuration / 2 : undefined);
+        if (dy > height / 2 && closeOnDragDown) {
+          this.close(closeDuration / 2);
         } else {
           Animated.timing(this.translateY, {
             toValue: 0,
-            duration: closeDuration ? closeDuration / 2 : undefined,
+            duration: closeDuration / 2,
             useNativeDriver: true,
           }).start();
         }
@@ -93,19 +93,20 @@ export default class BottomSheet extends PureComponent<Props, State> {
 
   open = () => {
     const { openDuration } = this.props;
-    this.setState({ visible: true }, () => {
+    this.setState(
+      { visible: true },
       Animated.timing(this.translateY, {
         toValue: 0,
         duration: openDuration,
         useNativeDriver: true,
-      }).start();
-    });
+      }).start
+    );
   };
 
   close = (duration?: number) => {
     const { height, closeDuration } = this.props;
     Animated.timing(this.translateY, {
-      toValue: height || phoneHeight,
+      toValue: height,
       duration: duration || closeDuration,
       useNativeDriver: true,
     }).start(() => {
@@ -128,8 +129,8 @@ export default class BottomSheet extends PureComponent<Props, State> {
     } = this.props;
 
     const opacity = this.translateY.interpolate({
-      inputRange: [0, height || phoneHeight],
-      outputRange: [backdropOpacity || 0.6, 0],
+      inputRange: [0, height],
+      outputRange: [backdropOpacity, 0],
     });
 
     return (
@@ -160,7 +161,7 @@ export default class BottomSheet extends PureComponent<Props, State> {
             styles.container,
             containerStyle,
             {
-              height: height || phoneHeight,
+              height: height,
               width: phoneWidth,
               transform: [{ translateY: this.translateY }],
             },
