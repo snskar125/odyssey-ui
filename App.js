@@ -5,6 +5,7 @@ import Switches from "./src/Wrappers/Switches";
 import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
 import SkeletonWrapper from "./src/Wrappers/SkeletonWrapper";
 import TouchableRippleWrapper from "./src/Wrappers/TouchableRippleWrapper";
+import TouchableScaleWrapper from "./src/Wrappers/TouchableScaleWrapper";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Switches />
       <BottomSheetWrapper />
       <TouchableRippleWrapper />
+      <TouchableScaleWrapper />
     </ScrollView>
   );
 }

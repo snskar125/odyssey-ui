@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
@@ -80,72 +80,74 @@ interface Props extends TouchableWithoutFeedbackProps {
   ripplePosition?: "foreground" | "background";
 }
 
-const TouchableRipple: React.FC<Props> = ({
-  style,
-  children,
-  rippleColor = "#000",
-  rippleOpacity = 0.1,
-  ripplePosition = "foreground",
-  onPressIn = () => {},
-  onPressOut = () => {},
-  ...rest
-}) => {
-  const [ripples, setRipples] = useState<
-    { id: string; x: number; y: number }[]
-  >([]);
-  const [pressedOut, setPressedOut] = useState(true);
+const TouchableRipple: React.FC<Props> = memo(
+  ({
+    style,
+    children,
+    rippleColor = "#000",
+    rippleOpacity = 0.1,
+    ripplePosition = "foreground",
+    onPressIn = () => {},
+    onPressOut = () => {},
+    ...rest
+  }) => {
+    const [ripples, setRipples] = useState<
+      { id: string; x: number; y: number }[]
+    >([]);
+    const [pressedOut, setPressedOut] = useState(true);
 
-  const handlePressIn = (e: GestureResponderEvent) => {
-    const { locationX, locationY } = e.nativeEvent;
-    setRipples((prev) => [
-      ...prev,
-      {
-        id: Math.random().toString(),
-        x: locationX,
-        y: locationY,
-      },
-    ]);
-    setPressedOut(false);
-    onPressIn(e);
-  };
+    const handlePressIn = (e: GestureResponderEvent) => {
+      const { locationX, locationY } = e.nativeEvent;
+      setRipples((prev) => [
+        ...prev,
+        {
+          id: Math.random().toString(),
+          x: locationX,
+          y: locationY,
+        },
+      ]);
+      setPressedOut(false);
+      onPressIn(e);
+    };
 
-  const handlePressOut = (e: GestureResponderEvent) => {
-    setPressedOut(true);
-    onPressOut(e);
-  };
+    const handlePressOut = (e: GestureResponderEvent) => {
+      setPressedOut(true);
+      onPressOut(e);
+    };
 
-  const handleRemove = useCallback((id) => {
-    setRipples((prev) => prev.filter((ripple) => ripple.id !== id));
-  }, []);
+    const handleRemove = useCallback((id) => {
+      setRipples((prev) => prev.filter((ripple) => ripple.id !== id));
+    }, []);
 
-  return (
-    <TouchableWithoutFeedback
-      {...rest}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-    >
-      <View
-        pointerEvents="box-only"
-        style={StyleSheet.compose(style, styles.container)}
+    return (
+      <TouchableWithoutFeedback
+        {...rest}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
       >
-        {ripplePosition === "foreground" ? children : null}
-        {ripples.map((r, i) => (
-          <Ripple
-            key={r.id}
-            id={r.id}
-            x={r.x}
-            y={r.y}
-            color={rippleColor}
-            opacity={rippleOpacity}
-            canRemove={!(!pressedOut && i === ripples.length - 1)}
-            onRemove={handleRemove}
-          />
-        ))}
-        {ripplePosition === "background" ? children : null}
-      </View>
-    </TouchableWithoutFeedback>
-  );
-};
+        <View
+          pointerEvents="box-only"
+          style={StyleSheet.compose(style, styles.container)}
+        >
+          {ripplePosition === "foreground" ? children : null}
+          {ripples.map((r, i) => (
+            <Ripple
+              key={r.id}
+              id={r.id}
+              x={r.x}
+              y={r.y}
+              color={rippleColor}
+              opacity={rippleOpacity}
+              canRemove={!(!pressedOut && i === ripples.length - 1)}
+              onRemove={handleRemove}
+            />
+          ))}
+          {ripplePosition === "background" ? children : null}
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
