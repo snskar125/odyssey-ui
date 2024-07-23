@@ -11,7 +11,7 @@ const ANIMATION_DURATION = 150;
 const ANIMATION_BOUNCINESS = 25;
 const CONTAINER_PADDING = 2;
 
-interface SwitchProps {
+interface Props {
   size?: number;
   activeSwitchColor?: string;
   inActiveSwitchColor?: string;
@@ -24,7 +24,7 @@ interface SwitchProps {
   bounce?: boolean;
 }
 
-const Switch: React.FC<SwitchProps> = memo((props) => {
+const Switch: React.FC<Props> = memo((props) => {
   const {
     size = 25,
     activeSwitchColor = "#FFF",

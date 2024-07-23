@@ -9,7 +9,7 @@ import {
 const ANIMATION_DURATION = 150;
 const ANIMATION_BOUNCINESS = 25;
 
-interface CheckBoxProps {
+interface Props {
   size?: number;
   value?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
@@ -25,7 +25,7 @@ interface CheckBoxProps {
   bounce?: boolean;
 }
 
-const CheckBox: React.FC<CheckBoxProps> = memo(
+const CheckBox: React.FC<Props> = memo(
   ({
     size = 25,
     value = true,

@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import CheckBoxes from "./src/Wrappers/CheckBoxs";
 import Switches from "./src/Wrappers/Switches";
 import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
+import SkeletonWrapper from "./src/Wrappers/SkeletonWrapper";
 
 export default function App() {
   return (
@@ -11,9 +12,10 @@ export default function App() {
       contentContainerStyle={styles.contentContainer}
     >
       <StatusBar style="light" />
+      <SkeletonWrapper />
       <CheckBoxes />
-      <Switches/>
-      <BottomSheetWrapper/>
+      <Switches />
+      <BottomSheetWrapper />
     </ScrollView>
   );
 }
