@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet } from "react-native";
 import CheckBoxes from "./src/Wrappers/CheckBoxs";
 import Switches from "./src/Wrappers/Switches";
+import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <StatusBar style="light" />
       <CheckBoxes />
       <Switches/>
+      <BottomSheetWrapper/>
     </ScrollView>
   );
 }
