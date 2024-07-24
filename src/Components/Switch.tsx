@@ -45,42 +45,22 @@ const Switch: React.FC<Props> = memo((props) => {
   ).current;
 
   useEffect(() => {
-    if (value) {
-      if (animate) {
-        if (bounce) {
-          Animated.spring(translateX, {
-            toValue: translation,
-            bounciness: ANIMATION_BOUNCINESS,
-            useNativeDriver: true,
-          }).start();
-        } else {
-          Animated.timing(translateX, {
-            toValue: translation,
-            duration: ANIMATION_DURATION,
-            useNativeDriver: true,
-          }).start();
-        }
+    if (animate) {
+      if (bounce) {
+        Animated.spring(translateX, {
+          toValue: value ? translation : 0,
+          bounciness: ANIMATION_BOUNCINESS,
+          useNativeDriver: true,
+        }).start();
       } else {
-        translateX.setValue(translation);
+        Animated.timing(translateX, {
+          toValue: value ? translation : 0,
+          duration: ANIMATION_DURATION,
+          useNativeDriver: true,
+        }).start();
       }
     } else {
-      if (animate) {
-        if (bounce) {
-          Animated.spring(translateX, {
-            toValue: 0,
-            bounciness: ANIMATION_BOUNCINESS,
-            useNativeDriver: true,
-          }).start();
-        } else {
-          Animated.timing(translateX, {
-            toValue: 0,
-            duration: ANIMATION_DURATION,
-            useNativeDriver: true,
-          }).start();
-        }
-      } else {
-        translateX.setValue(0);
-      }
+      translateX.setValue(value ? translation : 0);
     }
   }, [value, size]);
 

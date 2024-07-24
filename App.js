@@ -7,13 +7,12 @@ import SkeletonWrapper from "./src/Wrappers/SkeletonWrapper";
 import TouchableRippleWrapper from "./src/Wrappers/TouchableRippleWrapper";
 import TouchableScaleWrapper from "./src/Wrappers/TouchableScaleWrapper";
 import ActionButtonWrapper from "./src/Wrappers/ActionButtonWrapper";
+import SliderButton from "./src/Components/SliderButton";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.contentContainer}
-      >
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <StatusBar style="light" />
         <SkeletonWrapper />
         <CheckBoxes />
@@ -21,6 +20,7 @@ export default function App() {
         <BottomSheetWrapper />
         <TouchableRippleWrapper />
         <TouchableScaleWrapper />
+        <SliderButton />
       </ScrollView>
       <ActionButtonWrapper />
     </View>
