@@ -1,26 +1,29 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import CheckBoxes from "./src/Wrappers/CheckBoxs";
 import Switches from "./src/Wrappers/Switches";
 import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
 import SkeletonWrapper from "./src/Wrappers/SkeletonWrapper";
 import TouchableRippleWrapper from "./src/Wrappers/TouchableRippleWrapper";
 import TouchableScaleWrapper from "./src/Wrappers/TouchableScaleWrapper";
+import ActionButtonWrapper from "./src/Wrappers/ActionButtonWrapper";
 
 export default function App() {
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
-      <StatusBar style="light" />
-      <SkeletonWrapper />
-      <CheckBoxes />
-      <Switches />
-      <BottomSheetWrapper />
-      <TouchableRippleWrapper />
-      <TouchableScaleWrapper />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.contentContainer}
+      >
+        <StatusBar style="light" />
+        <SkeletonWrapper />
+        <CheckBoxes />
+        <Switches />
+        <BottomSheetWrapper />
+        <TouchableRippleWrapper />
+        <TouchableScaleWrapper />
+      </ScrollView>
+      <ActionButtonWrapper />
+    </View>
   );
 }
 
