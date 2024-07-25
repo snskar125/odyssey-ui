@@ -20,14 +20,19 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <StatusBar style="light" />
         <SkeletonWrapper />
-        <FlipWords style={{ color: "#FFF" }} />
+        <FlipWords style={styles.text} />
+        <SliderButton />
         <CheckBoxes />
         <Switches />
         <BottomSheetWrapper />
         <TouchableRippleWrapper />
         <TouchableScaleWrapper />
-        <SliderButton />
-        <PINInput ref={pinInput} value={pin} onChangeText={setPin} />
+        <PINInput
+          textStyle={styles.text}
+          ref={pinInput}
+          value={pin}
+          onChangeText={setPin}
+        />
         <Button
           title="Shake Input"
           onPress={() => {
@@ -50,5 +55,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 50,
     gap: 25,
+  },
+  text: {
+    color: "#FFF",
   },
 });

@@ -25,9 +25,9 @@ interface CellProps {
 class Cell extends PureComponent<CellProps> {
   scale = new Animated.Value(1);
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { animated, character } = this.props;
-    if (animated && character) {
+    if (animated && character && !prevProps.character) {
       const scales = [0.9, 1];
       Animated.sequence(
         scales.map((s) =>
@@ -138,9 +138,9 @@ export default class PINInput extends PureComponent<Props, State> {
   };
 
   shake = () => {
-    const translates = [-10, 10, -10, 10, 0];
+    const translations = [-10, 10, -10, 10, 0];
     Animated.sequence(
-      translates.map((t) =>
+      translations.map((t) =>
         Animated.timing(this.translateX, {
           toValue: t,
           duration: ANIMATION_DURATION,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 25,
     textAlign: "center",
-    color: "#FFF",
+    color: "#252525",
   },
   hidden: {
     opacity: 0,

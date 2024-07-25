@@ -11,7 +11,7 @@ export default function BottomSheetWrapper() {
         onPress={() => {
           sheet.current?.open();
         }}
-        title="BOTTOMSHEET"
+        title="Bottom Sheet"
       />
     </Fragment>
   );

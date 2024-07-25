@@ -125,10 +125,7 @@ const TouchableRipple: React.FC<Props> = memo(
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
-        <View
-          pointerEvents="box-only"
-          style={StyleSheet.compose(style, styles.container)}
-        >
+        <View pointerEvents="box-only" style={[style, styles.container]}>
           {ripplePosition === "foreground" ? children : null}
           {ripples.map((r, i) => (
             <Ripple

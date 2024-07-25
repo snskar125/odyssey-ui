@@ -61,9 +61,12 @@ const TouchableScale: React.FC<Props> = memo(
         onPressOut={handlePressOut}
       >
         <Animated.View
-          style={StyleSheet.compose(style, {
-            transform: [{ scale }],
-          })}
+          style={[
+            style,
+            {
+              transform: [{ scale }],
+            },
+          ]}
         >
           {children}
         </Animated.View>

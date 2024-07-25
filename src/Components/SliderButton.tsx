@@ -27,6 +27,7 @@ interface SliderButtonProps {
   icon?: React.ReactNode;
   title?: string;
   titleStyle?: TextStyle;
+  lockOnSuccess?: boolean;
   onSuccess?: (
     event: GestureResponderEvent,
     gestureState: PanResponderGestureState
@@ -50,6 +51,7 @@ const SliderButton: React.FC<SliderButtonProps> = memo(
     buttonBorderRadius = 5,
     buttonBorderWidth = 0,
     buttonBorderColor = "#252525",
+    lockOnSuccess = true,
     icon = (
       <Image
         style={{ marginLeft: 2, width: 20, height: 20, tintColor: "#FFF" }}
@@ -77,7 +79,8 @@ const SliderButton: React.FC<SliderButtonProps> = memo(
     }).start;
 
     const pan = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponder: () =>
+        !(lockOnSuccess && translate.__getValue() >= successOffset),
       onPanResponderTerminationRequest: () => false,
       onPanResponderStart: (_, __) => {
         reset();
