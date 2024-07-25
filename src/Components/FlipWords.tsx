@@ -72,13 +72,13 @@ const FlipWords: React.FC<Props> = memo(
     interval = 3000,
   }) => {
     const [index, setIndex] = useState(0);
-    const word = words[index > words.length - 1 ? words.length - 1 : index];
 
     const updateIndex = useCallback(() => {
       setIndex((prev) => (prev >= words.length - 1 ? 0 : prev + 1));
     }, [words.length]);
 
     if (words.length > 0) {
+      const word = words[index > words.length - 1 ? words.length - 1 : index];
       return (
         <View style={[styles.container, containerStyle]}>
           {word.split("").map((letter, i) => (
