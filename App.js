@@ -8,6 +8,7 @@ import TouchableRippleWrapper from "./src/Wrappers/TouchableRippleWrapper";
 import TouchableScaleWrapper from "./src/Wrappers/TouchableScaleWrapper";
 import ActionButtonWrapper from "./src/Wrappers/ActionButtonWrapper";
 import SliderButton from "./src/Components/SliderButton";
+import FlipWords from "./src/Components/FlipWords";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <TouchableRippleWrapper />
         <TouchableScaleWrapper />
         <SliderButton />
+        <FlipWords style={{ color: "#FFF" }} />
       </ScrollView>
       <ActionButtonWrapper />
     </View>
