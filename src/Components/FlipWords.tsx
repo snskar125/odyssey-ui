@@ -22,6 +22,7 @@ const Letter: React.FC<LetterProps> = ({
   onFinish,
 }) => {
   const animation = useRef(new Animated.Value(0)).current;
+
   useEffect(() => {
     animation.setValue(0);
     Animated.timing(animation, {

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Button, ScrollView, StyleSheet, View } from "react-native";
 import CheckBoxes from "./src/Wrappers/CheckBoxs";
 import Switches from "./src/Wrappers/Switches";
 import BottomSheetWrapper from "./src/Wrappers/BottomSheetWrapper";
@@ -9,20 +9,31 @@ import TouchableScaleWrapper from "./src/Wrappers/TouchableScaleWrapper";
 import ActionButtonWrapper from "./src/Wrappers/ActionButtonWrapper";
 import SliderButton from "./src/Components/SliderButton";
 import FlipWords from "./src/Components/FlipWords";
+import PINInput from "./src/Components/PINInput";
+import { useRef, useState } from "react";
 
 export default function App() {
+  const [pin, setPin] = useState("");
+  const pinInput = useRef();
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <StatusBar style="light" />
         <SkeletonWrapper />
+        <FlipWords style={{ color: "#FFF" }} />
         <CheckBoxes />
         <Switches />
         <BottomSheetWrapper />
         <TouchableRippleWrapper />
         <TouchableScaleWrapper />
         <SliderButton />
-        <FlipWords style={{ color: "#FFF" }} />
+        <PINInput ref={pinInput} value={pin} onChangeText={setPin} />
+        <Button
+          title="Shake Input"
+          onPress={() => {
+            pinInput.current?.shake();
+          }}
+        />
       </ScrollView>
       <ActionButtonWrapper />
     </View>
