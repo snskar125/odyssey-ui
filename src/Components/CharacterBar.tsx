@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 13,
     userSelect: "none",
+    fontWeight: "bold",
   },
   hoveredCharacterContainer: {
     position: "absolute",
@@ -182,6 +183,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 25,
     userSelect: "none",
+    fontWeight: "bold",
   },
 });
 
