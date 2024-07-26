@@ -17,16 +17,14 @@ export default function App() {
   const pinInput = useRef();
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={styles.contentContainer}
+      >
         <StatusBar style="light" />
         <SkeletonWrapper />
         <FlipWords style={styles.text} />
         <SliderButton />
-        <CheckBoxes />
-        <Switches />
-        <BottomSheetWrapper />
-        <TouchableRippleWrapper />
-        <TouchableScaleWrapper />
         <PINInput
           textStyle={styles.text}
           ref={pinInput}
@@ -39,6 +37,11 @@ export default function App() {
             pinInput.current?.shake();
           }}
         />
+        <CheckBoxes />
+        <Switches />
+        <BottomSheetWrapper />
+        <TouchableRippleWrapper />
+        <TouchableScaleWrapper />
       </ScrollView>
       <ActionButtonWrapper />
     </View>

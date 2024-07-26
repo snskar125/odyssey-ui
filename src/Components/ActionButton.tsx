@@ -104,7 +104,7 @@ const ActionButton: React.FC<Props> = ({
   borderRadius = 10,
   icon = (
     <Image
-      style={{ width: 20, height: 20, tintColor: "#FFF" }}
+      style={{ width: 15, height: 15, tintColor: "#FFF" }}
       source={{ uri: PlusIcon }}
     />
   ),

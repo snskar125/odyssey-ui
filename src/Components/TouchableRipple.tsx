@@ -16,7 +16,7 @@ const ANIMATION_DURATION = 750;
 const MAX_SCALE = Math.max(height, width) / (INITIAL_RIPPLE_SIZE / 2);
 
 interface RippleProps {
-  onRemove: (id) => void;
+  onRemove: (id: string) => void;
   id: string;
   color: string;
   opacity: number;
