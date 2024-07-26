@@ -2,7 +2,6 @@ import { memo, useRef } from "react";
 import {
   Animated,
   GestureResponderEvent,
-  StyleSheet,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
   ViewStyle,
