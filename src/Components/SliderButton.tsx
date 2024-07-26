@@ -12,7 +12,7 @@ import {
 
 const ANIMATION_DURATION = 250;
 
-interface SliderButtonProps {
+interface Props {
   width?: number;
   padding?: number;
   backgroundColor?: string;
@@ -38,7 +38,7 @@ interface SliderButtonProps {
   ) => void;
 }
 
-const SliderButton: React.FC<SliderButtonProps> = memo(
+const SliderButton: React.FC<Props> = memo(
   ({
     width = 300,
     padding = 5,
