@@ -22,8 +22,9 @@ const HOVERED_CHARACTER_CONTAINER_SIZE = 50;
 interface Props {
   characters?: string[];
   containerStyle?: ViewStyle;
+  onPressIn?: (character: string) => void;
   onChangeCharacter?: (character: string) => void;
-  onReleaseCharacter?: (character: string) => void;
+  onPressOut?: (character: string) => void;
   showHoveredCharacter?: boolean;
   hoveredCharacterPosition?: "left" | "right";
 }
@@ -43,8 +44,9 @@ const HoveredCharacter = memo(({ character }: { character: string }) => (
 const CharacterBar: React.FC<Props> = ({
   characters = DefaultCharacters,
   containerStyle,
+  onPressIn = () => {},
   onChangeCharacter = () => {},
-  onReleaseCharacter = () => {},
+  onPressOut = () => {},
   showHoveredCharacter = true,
   hoveredCharacterPosition = "left",
 }) => {
@@ -85,6 +87,7 @@ const CharacterBar: React.FC<Props> = ({
         onPanResponderStart: (e) => {
           const { locationY } = e.nativeEvent;
           startPosition.current = locationY;
+          onPressIn(offsetToCharacter(locationY));
           setChar(offsetToCharacter(locationY));
         },
         onPanResponderMove: (_, gestureState) => {
@@ -93,7 +96,7 @@ const CharacterBar: React.FC<Props> = ({
         },
         onPanResponderRelease: (_, gestureState) => {
           const { dy } = gestureState;
-          onReleaseCharacter(offsetToCharacter(startPosition.current + dy));
+          onPressOut(offsetToCharacter(startPosition.current + dy));
           setChar(null);
           startPosition.current = 0;
         },
