@@ -2,17 +2,13 @@ import { StyleSheet, View } from "react-native";
 import ActionButton from "../Components/ActionButton";
 
 export default function ActionButtonWrapper() {
-  return (
-    <View style={style.container}>
-      <ActionButton />
-    </View>
-  );
+  return <ActionButton containerStyle={style.container} />;
 }
 
 const style = StyleSheet.create({
   container: {
     position: "absolute",
-    right: 25,
+    left: 25,
     bottom: 25,
   },
 });

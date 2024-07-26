@@ -11,6 +11,7 @@ import SliderButton from "./src/Components/SliderButton";
 import FlipWords from "./src/Components/FlipWords";
 import PINInput from "./src/Components/PINInput";
 import { useRef, useState } from "react";
+import CharacterBar from "./src/Components/CharacterBar";
 
 export default function App() {
   const [pin, setPin] = useState("");
@@ -44,6 +45,7 @@ export default function App() {
         <TouchableScaleWrapper />
       </ScrollView>
       <ActionButtonWrapper />
+      <CharacterBar onReleaseCharacter={console.log} containerStyle={styles.characterBar} />
     </View>
   );
 }
@@ -61,5 +63,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#FFF",
+  },
+  characterBar: {
+    position: "absolute",
+    right: 5,
+    top: 120,
   },
 });

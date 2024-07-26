@@ -7,6 +7,7 @@ import {
   View,
   GestureResponderEvent,
   Text,
+  ViewStyle,
 } from "react-native";
 
 const ANIMATION_DURATION = 250;
@@ -92,6 +93,7 @@ interface Props {
     icon: React.ReactNode;
     onPress: (e: GestureResponderEvent) => void;
   }[];
+  containerStyle?: ViewStyle;
 }
 
 const ActionButton: React.FC<Props> = ({
@@ -112,6 +114,7 @@ const ActionButton: React.FC<Props> = ({
   bounce = true,
   onPress = () => {},
   buttons = [{}, {}],
+  containerStyle,
 }) => {
   const [extended, setExtended] = useState<boolean>(false);
   const animation = useRef(new Animated.Value(0)).current;
@@ -147,49 +150,51 @@ const ActionButton: React.FC<Props> = ({
   }, []);
 
   return (
-    <View>
-      {buttons.map((button, index) => (
-        <Animated.View
-          key={index}
+    <View style={containerStyle}>
+      <View>
+        {buttons.map((button, index) => (
+          <Animated.View
+            key={index}
+            style={[
+              styles.childButtonWrapper,
+              {
+                transform: [
+                  { scale: animation },
+                  {
+                    translateY: animation.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [0, -(size + BUTTON_SPACING) * (index + 1)],
+                    }),
+                  },
+                ],
+              },
+            ]}
+          >
+            <ChildButton {...button} size={size} onClose={onClose} />
+          </Animated.View>
+        ))}
+        <TouchableComponent
+          {...TouchableComponentProps}
           style={[
-            styles.childButtonWrapper,
+            styles.button,
             {
-              transform: [
-                { scale: animation },
-                {
-                  translateY: animation.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, -(size + BUTTON_SPACING) * (index + 1)],
-                  }),
-                },
-              ],
+              width: size,
+              height: size,
+              backgroundColor: color,
+              borderColor,
+              borderWidth,
+              borderRadius,
             },
           ]}
+          onPress={handlePress}
         >
-          <ChildButton {...button} size={size} onClose={onClose} />
-        </Animated.View>
-      ))}
-      <TouchableComponent
-        {...TouchableComponentProps}
-        style={[
-          styles.button,
-          {
-            width: size,
-            height: size,
-            backgroundColor: color,
-            borderColor,
-            borderWidth,
-            borderRadius,
-          },
-        ]}
-        onPress={handlePress}
-      >
-        <Animated.View
-          style={{ transform: [{ rotate: rotateIcon ? rotate : "0deg" }] }}
-        >
-          {icon}
-        </Animated.View>
-      </TouchableComponent>
+          <Animated.View
+            style={{ transform: [{ rotate: rotateIcon ? rotate : "0deg" }] }}
+          >
+            {icon}
+          </Animated.View>
+        </TouchableComponent>
+      </View>
     </View>
   );
 };
