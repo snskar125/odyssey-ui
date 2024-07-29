@@ -12,6 +12,7 @@ import FlipWords from "./src/Components/FlipWords";
 import PINInput from "./src/Components/PINInput";
 import { useRef, useState } from "react";
 import CharacterBar from "./src/Components/CharacterBar";
+import TextGenerateEffect from "./src/Components/TextGenerateEffect";
 
 export default function App() {
   const [pin, setPin] = useState("");
@@ -26,6 +27,11 @@ export default function App() {
         <SkeletonWrapper />
         <FlipWords style={styles.text} />
         <SliderButton />
+        <TextGenerateEffect style={styles.text}>
+          Unleash the magic of motion with our React Native components – where
+          every interaction tells a story. Dive into seamless animations that
+          breathe life into your app!
+        </TextGenerateEffect>
         <PINInput
           textStyle={styles.text}
           ref={pinInput}
@@ -45,7 +51,9 @@ export default function App() {
         <TouchableScaleWrapper />
       </ScrollView>
       <ActionButtonWrapper />
-      <CharacterBar onReleaseCharacter={console.log} containerStyle={styles.characterBar} />
+      <CharacterBar
+        containerStyle={styles.characterBar}
+      />
     </View>
   );
 }
