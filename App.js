@@ -13,6 +13,7 @@ import PINInput from "./src/Components/PINInput";
 import { useRef, useState } from "react";
 import CharacterBar from "./src/Components/CharacterBar";
 import TextGenerateEffect from "./src/Components/TextGenerateEffect";
+import TypeWriterEffect from "./src/Components/TypeWriterEffect";
 
 export default function App() {
   const [pin, setPin] = useState("");
@@ -44,6 +45,11 @@ export default function App() {
             pinInput.current?.shake();
           }}
         />
+        <TypeWriterEffect style={styles.text}>
+          Unleash the magic of motion with our React Native components – where
+          every interaction tells a story. Dive into seamless animations that
+          breathe life into your app!
+        </TypeWriterEffect>
         <CheckBoxes />
         <Switches />
         <BottomSheetWrapper />
