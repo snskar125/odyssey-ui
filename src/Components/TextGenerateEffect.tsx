@@ -32,7 +32,7 @@ const Word = memo(({ word, delay, style, opacity: o, isLast }: WordProps) => {
   );
 });
 
-interface TextGenerateEffectProps {
+interface Props {
   children?: string;
   interval?: number;
   opacity?: number;
@@ -47,7 +47,7 @@ const TextGenerateEffect = memo(
     opacity = 1,
     style,
     containerStyle,
-  }: TextGenerateEffectProps) => {
+  }: Props) => {
     const words = children.split(" ");
 
     return (
