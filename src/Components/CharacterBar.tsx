@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#FFF",
-    fontSize: 13,
+    fontSize: 12,
     userSelect: "none",
     fontWeight: "bold",
   },
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     top: 0,
     width: HOVERED_CHARACTER_CONTAINER_SIZE,
     height: HOVERED_CHARACTER_CONTAINER_SIZE,
-    borderRadius: 10,
+    borderRadius: 3,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#3B81F6",
