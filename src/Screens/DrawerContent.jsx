@@ -5,6 +5,7 @@ const Screens = [
   { title: "Home", name: "Home" },
   { title: "Character Bar", name: "CharacterBarDemo" },
   { title: "Skeleton", name: "SkeletonDemo" },
+  { title: "Drawer", name: "DrawerDemo" },
 ];
 
 export default function DrawerContent({ navigation }) {
