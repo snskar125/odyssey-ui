@@ -2,26 +2,26 @@ import { memo, useEffect, useRef } from "react";
 import { Animated, StyleSheet, ViewProps } from "react-native";
 
 const ANIMATION_DURATION = 750;
-const MIN_OPACITY = 0.25;
 
 interface Props extends ViewProps {
-  opacity?: number;
+  minOpacity?: number;
+  maxOpacity?: number;
 }
 
 const Skeleton: React.FC<Props> = memo(
-  ({ opacity = 1, style, children, ...rest }) => {
-    const opacityValue = useRef(new Animated.Value(opacity)).current;
+  ({ minOpacity = 0.25, maxOpacity = 1, style, children, ...rest }) => {
+    const opacityValue = useRef(new Animated.Value(maxOpacity)).current;
 
     useEffect(() => {
       const animation = Animated.loop(
         Animated.sequence([
           Animated.timing(opacityValue, {
-            toValue: MIN_OPACITY,
+            toValue: minOpacity,
             duration: ANIMATION_DURATION,
             useNativeDriver: true,
           }),
           Animated.timing(opacityValue, {
-            toValue: opacity,
+            toValue: maxOpacity,
             duration: ANIMATION_DURATION,
             useNativeDriver: true,
           }),
@@ -29,7 +29,7 @@ const Skeleton: React.FC<Props> = memo(
       );
       animation.start();
       return animation.stop;
-    }, [opacity]);
+    }, [minOpacity, maxOpacity]);
 
     return (
       <Animated.View

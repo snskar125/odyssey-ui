@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 10,
     paddingTop: 0,
-    paddingRight: 30,
     gap: GAP,
   },
   contact: {
@@ -108,6 +107,8 @@ const styles = StyleSheet.create({
     right: 0,
     top: 150,
     borderRadius: 0,
+    borderWidth: 1,
+    borderColor: "#101010",
   },
   name: {
     fontSize: 14,
