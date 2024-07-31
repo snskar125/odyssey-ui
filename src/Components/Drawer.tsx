@@ -73,7 +73,9 @@ export default class Drawer extends PureComponent<Props> {
     });
 
     return (
-      <View style={[styles.container, containerStyle]}>
+      <View
+        style={[styles.container, containerStyle, styles.mandatoryContainer]}
+      >
         {drawerContent}
         <TouchableWithoutFeedback
           onPress={() => {
@@ -84,6 +86,7 @@ export default class Drawer extends PureComponent<Props> {
             style={[
               styles.screen,
               screenContainerStyle,
+              styles.mandatoryScreen,
               { borderRadius, transform: [{ scale }, { translateX }] },
             ]}
           >
@@ -98,13 +101,17 @@ export default class Drawer extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#3B81F6",
+  },
+  screen: {
+    backgroundColor: "#101010",
+  },
+  mandatoryContainer: {
     width: screenWidth,
     height: screenHeight,
   },
-  screen: {
+  mandatoryScreen: {
     position: "absolute",
     width: "100%",
     height: "100%",
-    backgroundColor: "#101010",
   },
 });
