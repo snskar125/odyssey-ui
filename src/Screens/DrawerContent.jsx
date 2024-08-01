@@ -3,6 +3,7 @@ import TouchableRipple from "../Components/TouchableRipple";
 
 const Screens = [
   { title: "Home", name: "Home" },
+  { title: "Animated Number", name: "AnimatedNumberDemo" },
   { title: "Bottom Sheet", name: "BottomSheetDemo" },
   { title: "Character Bar", name: "CharacterBarDemo" },
   { title: "Skeleton", name: "SkeletonDemo" },

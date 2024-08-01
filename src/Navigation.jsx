@@ -6,6 +6,7 @@ import DrawerContent from "./Screens/DrawerContent";
 import SkeletonDemo from "./Wrappers/SkeletonDemo";
 import DrawerDemo from "./Wrappers/DrawerDemo";
 import BottomSheetDemo from "./Wrappers/BottomSheetDemo";
+import AnimatedNumberDemo from "./Wrappers/AnimatedNumberDemo";
 
 const Drawer = createDrawerNavigator();
 
@@ -15,6 +16,7 @@ const DrawerNavigator = () => (
     screenOptions={{ headerShown: false }}
   >
     <Drawer.Screen name="Home" component={Home} />
+    <Drawer.Screen name="AnimatedNumberDemo" component={AnimatedNumberDemo} />
     <Drawer.Screen name="BottomSheetDemo" component={BottomSheetDemo} />
     <Drawer.Screen name="CharacterBarDemo" component={CharacterBarDemo} />
     <Drawer.Screen name="SkeletonDemo" component={SkeletonDemo} />
