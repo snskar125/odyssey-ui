@@ -58,6 +58,7 @@ export default class BottomSheet extends PureComponent<Props, State> {
 
   private translateY: Animated.Value;
   private panResponder: PanResponderInstance;
+  private closing: boolean;
 
   constructor(props: Props) {
     super(props);
@@ -65,7 +66,7 @@ export default class BottomSheet extends PureComponent<Props, State> {
       visible: false,
     };
     this.translateY = new Animated.Value(this.props.height);
-
+    this.closing = false;
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
@@ -104,14 +105,18 @@ export default class BottomSheet extends PureComponent<Props, State> {
   };
 
   close = (duration?: number) => {
-    const { height, closeDuration } = this.props;
-    Animated.timing(this.translateY, {
-      toValue: height,
-      duration: duration || closeDuration,
-      useNativeDriver: true,
-    }).start(() => {
-      this.setState({ visible: false });
-    });
+    if (!this.closing) {
+      this.closing = true;
+      const { height, closeDuration } = this.props;
+      Animated.timing(this.translateY, {
+        toValue: height,
+        duration: duration || closeDuration,
+        useNativeDriver: true,
+      }).start(() => {
+        this.closing = false;
+        this.setState({ visible: false });
+      });
+    }
   };
 
   render() {
