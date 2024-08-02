@@ -83,7 +83,7 @@ const Like: React.FC<LikeProps> = memo(({ id, x, y, px, onRemove, icon }) => {
 interface Props extends TouchableWithoutFeedbackProps {
   children?: ReactNode;
   icon?: ReactNode;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPressIn?: (event: GestureResponderEvent) => void;
   onDoublePress?: (event: GestureResponderEvent) => void;
   containerStyle?: ViewStyle;
 }
@@ -92,7 +92,7 @@ const InstagramLikeEffect: React.FC<Props> = memo(
   ({
     children,
     icon = DEFAULT_ICON,
-    onPress = () => {},
+    onPressIn = () => {},
     onDoublePress = () => {},
     containerStyle,
     ...rest
@@ -107,7 +107,7 @@ const InstagramLikeEffect: React.FC<Props> = memo(
     >([]);
 
     const handlePress = useCallback((event: GestureResponderEvent) => {
-      onPress(event);
+      onPressIn(event);
       const currentTime = Date.now();
       const { pageX, pageY, locationX, locationY } = event.nativeEvent;
       if (currentTime - lastTap.current.time < MAX_TAP_INTERVAL) {
