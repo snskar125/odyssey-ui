@@ -137,7 +137,7 @@ const InstagramLikeEffect: React.FC<Props> = memo(
     }, []);
 
     return (
-      <TouchableWithoutFeedback {...rest} onPress={handlePress}>
+      <TouchableWithoutFeedback {...rest} onPressIn={handlePress}>
         <View style={containerStyle} pointerEvents="box-only">
           {children}
           {likes.map((like) => (
