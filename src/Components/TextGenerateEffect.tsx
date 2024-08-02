@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import { Animated, StyleSheet, View, TextStyle, ViewStyle } from "react-native";
 
 const REVEAL_DURATION = 750;
@@ -40,14 +40,8 @@ interface Props {
   style?: TextStyle;
 }
 
-const TextGenerateEffect = memo(
-  ({
-    children = "",
-    interval = 150,
-    opacity = 1,
-    style,
-    containerStyle,
-  }: Props) => {
+const TextGenerateEffect: React.FC<Props> = memo(
+  ({ children = "", interval = 150, opacity = 1, style, containerStyle }) => {
     const words = children.split(" ");
 
     return (

@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import {
   Animated,
   StyleSheet,
@@ -62,14 +62,8 @@ interface Props {
   cursorStyle?: ViewStyle;
 }
 
-const TypeWriterEffect = memo(
-  ({
-    children = "",
-    interval = 25,
-    style,
-    containerStyle,
-    cursorStyle,
-  }: Props) => {
+const TypeWriterEffect: React.FC<Props> = memo(
+  ({ children = "", interval = 25, style, containerStyle, cursorStyle }) => {
     const [sentence, setSentence] = useState<string>("");
 
     useEffect(() => {
