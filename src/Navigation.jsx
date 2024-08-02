@@ -7,6 +7,7 @@ import SkeletonDemo from "./Wrappers/SkeletonDemo";
 import DrawerDemo from "./Wrappers/DrawerDemo";
 import BottomSheetDemo from "./Wrappers/BottomSheetDemo";
 import AnimatedNumberDemo from "./Wrappers/AnimatedNumberDemo";
+import IGLikeDemo from "./Wrappers/IGLikeDemo";
 
 const Drawer = createDrawerNavigator();
 
@@ -19,8 +20,9 @@ const DrawerNavigator = () => (
     <Drawer.Screen name="AnimatedNumberDemo" component={AnimatedNumberDemo} />
     <Drawer.Screen name="BottomSheetDemo" component={BottomSheetDemo} />
     <Drawer.Screen name="CharacterBarDemo" component={CharacterBarDemo} />
-    <Drawer.Screen name="SkeletonDemo" component={SkeletonDemo} />
     <Drawer.Screen name="DrawerDemo" component={DrawerDemo} />
+    <Drawer.Screen name="IGLikeDemo" component={IGLikeDemo} />
+    <Drawer.Screen name="SkeletonDemo" component={SkeletonDemo} />
   </Drawer.Navigator>
 );
 

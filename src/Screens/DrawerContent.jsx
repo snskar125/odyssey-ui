@@ -6,8 +6,9 @@ const Screens = [
   { title: "Animated Number", name: "AnimatedNumberDemo" },
   { title: "Bottom Sheet", name: "BottomSheetDemo" },
   { title: "Character Bar", name: "CharacterBarDemo" },
-  { title: "Skeleton", name: "SkeletonDemo" },
   { title: "Drawer", name: "DrawerDemo" },
+  { title: "Instagram Like Effect", name: "IGLikeDemo" },
+  { title: "Skeleton", name: "SkeletonDemo" },
 ];
 
 export default function DrawerContent({ navigation }) {
