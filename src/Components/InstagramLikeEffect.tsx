@@ -85,7 +85,7 @@ interface Props extends TouchableWithoutFeedbackProps {
   icon?: ReactNode;
   onPressIn?: (event: GestureResponderEvent) => void;
   onDoublePress?: (event: GestureResponderEvent) => void;
-  containerStyle?: ViewStyle;
+  style?: ViewStyle;
 }
 
 const InstagramLikeEffect: React.FC<Props> = memo(
@@ -94,7 +94,7 @@ const InstagramLikeEffect: React.FC<Props> = memo(
     icon = DEFAULT_ICON,
     onPressIn = () => {},
     onDoublePress = () => {},
-    containerStyle,
+    style,
     ...rest
   }) => {
     const lastTap = useRef<{ time: number; x: number; y: number }>({
@@ -138,7 +138,7 @@ const InstagramLikeEffect: React.FC<Props> = memo(
 
     return (
       <TouchableWithoutFeedback {...rest} onPressIn={handlePress}>
-        <View style={containerStyle} pointerEvents="box-only">
+        <View style={style} pointerEvents="box-only">
           {children}
           {likes.map((like) => (
             <Like
