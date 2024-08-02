@@ -1,4 +1,4 @@
-import { memo, useRef } from "react";
+import React, { memo, useRef } from "react";
 import {
   Animated,
   GestureResponderEvent,

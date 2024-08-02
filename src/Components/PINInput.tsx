@@ -23,7 +23,7 @@ interface CellProps {
 }
 
 class Cell extends PureComponent<CellProps> {
-  scale = new Animated.Value(1);
+  private scale = new Animated.Value(1);
 
   componentDidUpdate(prevProps) {
     const { animated, character } = this.props;

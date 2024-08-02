@@ -1,4 +1,4 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import InstagramLikeEffect from "../Components/InstagramLikeEffect";
 
 export default function IGLikeDemo() {

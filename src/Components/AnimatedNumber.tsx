@@ -96,8 +96,8 @@ const AnimatedNumber: React.FC<Props> = memo(
     const numberString = useMemo(
       () =>
         insertCommas
-          ? FormatToCommaString(parseFloat(number))
-          : number.toString(),
+          ? FormatToCommaString(parseFloat(number ? number : "0"))
+          : String(number ? number : "0"),
       [number, insertCommas]
     );
 

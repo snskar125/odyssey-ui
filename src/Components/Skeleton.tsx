@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import { Animated, StyleSheet, ViewProps } from "react-native";
 
 const ANIMATION_DURATION = 750;

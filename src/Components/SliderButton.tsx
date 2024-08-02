@@ -79,8 +79,8 @@ const SliderButton: React.FC<Props> = memo(
     }).start;
 
     const pan = PanResponder.create({
-      onStartShouldSetPanResponder: () =>
-        !(lockOnSuccess && translate.__getValue() >= successOffset),
+      onStartShouldSetPanResponder: (_, { dx }) =>
+        !(lockOnSuccess && dx >= successOffset),
       onPanResponderTerminationRequest: () => false,
       onPanResponderStart: (_, __) => {
         reset();
