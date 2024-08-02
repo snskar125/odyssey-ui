@@ -64,8 +64,9 @@ const Like: React.FC<LikeProps> = memo(({ id, x, y, px, onRemove, icon }) => {
     <Animated.View
       style={[
         styles.iconContainer,
-        { left: x - ICON_SIZE / 2, top: y - ICON_SIZE / 2 },
         {
+          left: x - ICON_SIZE / 2,
+          top: y - ICON_SIZE / 2,
           transform: [
             { scale },
             { rotate },
