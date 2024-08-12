@@ -9,6 +9,7 @@ const Screens = [
   { title: "Drawer", name: "DrawerDemo" },
   { title: "Instagram Like Effect", name: "IGLikeDemo" },
   { title: "Skeleton", name: "SkeletonDemo" },
+  { title: "Toast", name: "ToastDemo" },
 ];
 
 export default function DrawerContent({ navigation }) {
