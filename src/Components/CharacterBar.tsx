@@ -15,8 +15,8 @@ import {
   ViewStyle,
 } from "react-native";
 
-const BACKGROUND_COLOR = "#252525";
-const ACTIVE_BACKGROUND_COLOR = "#353535";
+const BACKGROUND_COLOR = "#FFF";
+const ACTIVE_BACKGROUND_COLOR = "#EEE";
 const HOVERED_CHARACTER_CONTAINER_SIZE = 50;
 
 interface Props {
@@ -161,11 +161,11 @@ const styles = StyleSheet.create({
   },
   charactersContainer: {
     alignItems: "center",
-    paddingHorizontal: 5,
+    paddingHorizontal: 3,
   },
   text: {
-    color: "#FFF",
-    fontSize: 12,
+    color: "#3B81F6",
+    fontSize: 11,
     userSelect: "none",
     fontWeight: "bold",
   },

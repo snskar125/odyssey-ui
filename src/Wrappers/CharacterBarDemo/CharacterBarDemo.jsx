@@ -9,9 +9,10 @@ import {
 import Contacts from "./Contacts.json";
 import { memo, useCallback, useMemo, useRef, useState } from "react";
 import CharacterBar from "../../Components/CharacterBar";
+import { FlashList } from "@shopify/flash-list";
 
 const ITEM_HEIGHT = 50;
-const GAP = 10;
+const GAP = 0;
 
 const Contact = memo(({ name, phone }) => {
   return (
@@ -62,7 +63,7 @@ export default function CharacterBarDemo() {
           value={search}
           onChangeText={setSearch}
           placeholder="Search Contacts..."
-          placeholderTextColor={"#808080"}
+          placeholderTextColor={"#505050"}
         />
       </View>
       <FlatList
@@ -70,6 +71,7 @@ export default function CharacterBarDemo() {
         data={Filtered}
         contentContainerStyle={styles.contentContainer}
         getItemLayout={getItemLayout}
+        estimatedItemSize={ITEM_HEIGHT}
         renderItem={({ item }) => (
           <Contact name={item.name} phone={item.phone} />
         )}
@@ -86,43 +88,40 @@ export default function CharacterBarDemo() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#101010",
+    backgroundColor: "#FFF",
   },
   contentContainer: {
     padding: 10,
     paddingTop: 0,
-    gap: GAP,
   },
   contact: {
     flexDirection: "row",
     height: ITEM_HEIGHT,
     alignItems: "center",
     paddingLeft: 10,
-    borderLeftColor: "#3B81F6",
-    borderLeftWidth: 2,
-    backgroundColor: "#202020",
+    width: "90%",
+    borderBottomWidth: 1,
+    borderBottomColor: "#EEE",
   },
   characterBar: {
     position: "absolute",
-    right: 0,
+    right: 10,
     top: 150,
-    borderRadius: 0,
-    borderWidth: 1,
-    borderColor: "#101010",
+    borderRadius: 15,
   },
   name: {
     fontSize: 14,
-    color: "#F2F5F7",
+    color: "#101010",
     fontWeight: "bold",
   },
   phone: {
     fontSize: 12,
-    color: "#F2F5F7",
+    color: "#303030",
   },
   searchBar: {
-    color: "#F2F5F7",
-    backgroundColor: "#202020",
-    borderRadius: 3,
+    color: "#000",
+    backgroundColor: "#EEE",
+    borderRadius: 25,
     fontSize: 14,
     padding: 10,
     paddingHorizontal: 15,
